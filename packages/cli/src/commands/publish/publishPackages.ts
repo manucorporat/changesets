@@ -1,4 +1,4 @@
-import { join } from "path";
+import { resolve } from "path";
 import semver from "semver";
 import chalk from "chalk";
 import { AccessType } from "@changesets/types";
@@ -127,7 +127,7 @@ async function publishAPackage(
   );
 
   const publishDir = publishConfig?.directory
-    ? join(pkg.dir, publishConfig.directory)
+    ? resolve(pkg.dir, publishConfig.directory)
     : pkg.dir;
 
   const publishConfirmation = await npmUtils.publish(
